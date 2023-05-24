@@ -1,40 +1,39 @@
 interface ClimateTechFeed {
     title: string;
-    url: string;
+    urls: string[];
     description: string;
   }
 
-export const climateTechFeeds: ClimateTechFeed[] = [
+  export const climateTechFeeds: ClimateTechFeed[] = [
     {
       "title": "Climate Tech News",
-      "url": "https://example.com/climate-tech-news/rss",
-      "description": "Latest news and updates on climate technology" 
+      "urls": ["https://www.carbonbrief.org/feed"],
+      "description": "News and analysis on climate science, climate policy and energy policy." 
     },
     {
       "title": "Renewable Energy Updates",
-      "url": "https://example.com/renewable-energy/rss",
-      "description": "Stay updated with the latest developments in renewable energy",
-      
+      "urls": ["https://renewablesnow.com/feeds/"],
+      "description": "Latest information about renewable energy sources like solar, wind, hydropower, etc.",
     },
     {
       "title": "Sustainable Transport Insights",
-      "url": "https://example.com/sustainable-transport/rss",
-      "description": "Insights and news on sustainable transportation solutions",
+      "urls": ["https://www.appropedia.org/Sustainable_transport_news"],
+      "description": "News and insights about eco-friendly transportation systems and technologies.",
     },
     {
       "title": "Green Building News",
-      "url": "https://example.com/green-building/rss",
-      "description": "Latest updates and trends in green building practices",
+      "urls": ["https://www.greenbuildingadvisor.com/feed"],
+      "description": "Updates about green architecture and construction practices.",
     },
     {
       "title": "Circular Economy Updates",
-      "url": "https://example.com/circular-economy/rss",
-      "description": "News and insights on the circular economy and sustainable resource management",
+      "urls": ["https://unece.org/media/Circular%20Economy/news"],
+      "description": "Information about sustainable economic systems where waste is minimized and resources are reused.",
     },
     {
       "title": "Climate Policy Analysis",
-      "url": "https://example.com/climate-policy/rss",
-      "description": "In-depth analysis of climate policies and regulations worldwide",
+      "urls": ["https://www.sciencedaily.com/rss/earth_climate.xml"],
+      "description": "In-depth analysis and updates about climate policies and regulations worldwide.",
     }
-  ]
+]
   

@@ -14,7 +14,7 @@ export default async function (req: VercelRequest, res: VercelResponse) {
   // Fetch and parse RSS feeds
   const parsedFeeds = await Promise.all(
     climateTechFeeds.map(async (feed) => {
-      const response = await fetch(feed.url);
+      const response = await fetch(feed.urls[0]);
       const xml = await response.text();
       const json = await parseStringPromise(xml);
       return { ...feed, items: json };
