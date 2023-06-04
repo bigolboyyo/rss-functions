@@ -10,13 +10,12 @@ export interface RSSFeed {
     language: string;
     pubDate: string;
     lastBuildDate: string;
-    item: Item[];
+    items: Item[];
   }
   
   export interface ClimateTechFeed {
     title: string;
     url: string;
-    description: string;
     items?: Item[];  
     // meta property for user submitted custom data
     meta?: Record<string, any>;
