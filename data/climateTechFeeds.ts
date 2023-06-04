@@ -4,7 +4,15 @@ import { ClimateTechFeed } from './interfaces';
     {
       "title": "Climate Tech News",
       "url": "https://www.carbonbrief.org/feed",
-      "description": "News and analysis on climate science, climate policy and energy policy." 
+      "description": "News and analysis on climate science, climate policy and energy policy.",
+      // Give the user the ability to add custom data
+      "meta": {
+        "customProperty1": "Example Value 1",
+        "customProperty2": "Example Value 2",
+        "customProperty3": "Example Value 3",
+        "website": "example.com",
+        "tags": ["technology", "climate", "renewable energy"]
+      }
     },
     {
       "title": "Renewable Energy Updates",

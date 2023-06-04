@@ -18,6 +18,8 @@ export interface RSSFeed {
     url: string;
     description: string;
     items?: Item[];  
+    // meta property for user submitted custom data
+    meta?: Record<string, any>;
   }
 
   export interface Item {
