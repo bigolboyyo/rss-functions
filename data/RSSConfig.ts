@@ -6,7 +6,7 @@ import { climateTechFeeds } from './climateTechFeeds';
 export class RSSConfig {
   private allowedOrigins: string[];
 
-  constructor(allowedOrigins: string[] = ['http://127.0.0.1:8000', 'https://www.climatetechhandbook.com']) {
+  constructor(allowedOrigins: string[] = ['http://127.0.0.1:8000', 'https://www.climatetechhandbook.com', "*"]) {
     this.allowedOrigins = allowedOrigins;
   }
 
