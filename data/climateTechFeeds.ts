@@ -14,24 +14,32 @@ import { ClimateTechFeed } from './interfaces';
       }
     },
     {
+      "title": "Grist",
+      "url": "https://grist.org/feed/"
+    },
+    {
+      "title": "Ars Technica",
+      "url": "https://arstechnica.com/tag/climate-change/feed/" 
+    },
+    {
+      "title": "Desmog",
+      "url": "https://www.desmog.com/feed/"
+    },
+    {
+      "title": "Tech Crunch",
+      "url": "https://techcrunch.com/tag/climate-tech/feed/"
+    },
+    {
+      "title": "Green Building Advisor",
+      "url": "https://www.greenbuildingadvisor.com/feed"
+    },
+    {
+      "title": "Science Daily: Earth Climate",
+      "url": "https://www.sciencedaily.com/rss/earth_climate.xml"
+    },
+    {
       "title": "Renewables Now",
-      "url": "https://renewablesnow.com/feeds/",
+      "url": "https://renewablesnow.com/news/news_feed/?region=usa%20&%20canada"
     },
-    {
-      "title": "Sustainable Transport Insights",
-      "url": "https://www.appropedia.org/Sustainable_transport_news",
-    },
-    {
-      "title": "Green Building News",
-      "url": "https://www.greenbuildingadvisor.com/feed",
-    },
-    {
-      "title": "Circular Economy Updates",
-      "url": "https://unece.org/media/Circular%20Economy/news",
-    },
-    {
-      "title": "Climate Policy Analysis",
-      "url": "https://www.sciencedaily.com/rss/earth_climate.xml",
-    }
 ]
   

@@ -1,8 +1,7 @@
-import fetch from 'node-fetch';
 import { parseStringPromise } from 'xml2js';
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { ClimateTechFeed } from './data/interfaces';
-import { climateTechFeeds } from './data/climateTechFeeds';
+import { ClimateTechFeed } from './interfaces';
+import { climateTechFeeds } from './climateTechFeeds';
 
 export class RSSConfig {
   private allowedOrigins: string[];
@@ -30,31 +29,39 @@ export class RSSConfig {
         const response = await fetch(feed.url);
         const xml = await response.text();
         const json = await parseStringPromise(xml);
-        return { ...feed, items: json.rss.channel.item };
+        return { ...feed, items: json.rss.channel[0].item };
       })
     );
-
     return rawFeeds;
   }
 
-  public structureFeeds(rawFeeds: ClimateTechFeed[]) {
-    const structuredFeeds = rawFeeds.map((feed) => {
-      return {
+  public async aggregateFeeds() {
+    const aggregatedFeeds: any[] = [];
 
-      };
+    const rawFeeds = await this.fetchAndParseFeeds(climateTechFeeds)
+    rawFeeds.forEach((feed) => {
+      if (feed.items) {
+        feed.items.forEach((item: any) => {
+          aggregatedFeeds.push(item);
+        });
+      }
     });
-
-    return structuredFeeds;
+  
+    return aggregatedFeeds;
   }
+  
+  
+
 
   // --> Setting the response JSON
 
   public async handleRequest(req: VercelRequest, res: VercelResponse) {
     this.setAccessControlHeaders(req, res);
-
-    const rawFeeds = await this.fetchAndParseFeeds(climateTechFeeds);
-    const structuredFeeds = this.structureFeeds(rawFeeds);
-
-    res.status(200).json(structuredFeeds);
+  
+    // const rawFeeds = await this.fetchAndParseFeeds(climateTechFeeds);
+    const aggregatedFeeds = await this.aggregateFeeds();
+    console.log(aggregatedFeeds)
+    res.status(200).json(aggregatedFeeds);
   }
+  
 }
