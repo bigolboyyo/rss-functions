@@ -19,6 +19,7 @@ export class RSSConfig {
     }
 
     res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Cache-Control', 's-maxage=86400');
   }
 
   // --> Fetching and Structuring RSS feed functions
@@ -73,7 +74,7 @@ export class RSSConfig {
 
   public async handleRequest(req: VercelRequest, res: VercelResponse) {
     this.setAccessControlHeaders(req, res);
-  
+    
     const feeds = await this.aggregateFeeds();
     return feeds;
   }
