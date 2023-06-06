@@ -1,3 +1,9 @@
+export interface ClimateTechHandbookRSSFeed {
+  developer: string;
+  meta: Record<string, any>; // temp fill in for info
+  channels: Channel[];
+}
+
 export interface RSSFeed {
     version: string;
     channel: Channel;

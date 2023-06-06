@@ -1,6 +1,6 @@
 import { parseStringPromise } from 'xml2js';
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { ClimateTechFeed } from './interfaces';
+import { ClimateTechFeed, ClimateTechHandbookRSSFeed, Channel, Item, RSSFeed } from './interfaces';
 import { climateTechFeeds } from './climateTechFeeds';
 
 export class RSSConfig {
@@ -46,22 +46,36 @@ export class RSSConfig {
         });
       }
     });
-  
+    
     return aggregatedFeeds;
   }
-  
-  
 
+  // This will be the endpoint return
+  // take the agFeeds and structure with the RSSFeed interface
+  // So the CTHRSSFeed will have an array  of RSSFeed[]
+  // each feed will have the version and the channel
+  // each channel will have its metadata and list of Item[]
+
+  // I should have a title property in the RSSFeed interface
+  // rssFeed.title would be the CTFeed title
+
+
+  public async buildClimateTechFeed(agFeeds: any[], developer: string = "Wesley Grant", meta: Record<string, any>, channels: Channel[]){
+    const feed: ClimateTechHandbookRSSFeed = {
+      developer,
+      meta,
+      channels
+    }
+
+  }
 
   // --> Setting the response JSON
 
   public async handleRequest(req: VercelRequest, res: VercelResponse) {
     this.setAccessControlHeaders(req, res);
   
-    // const rawFeeds = await this.fetchAndParseFeeds(climateTechFeeds);
-    const aggregatedFeeds = await this.aggregateFeeds();
-    console.log(aggregatedFeeds)
-    res.status(200).json(aggregatedFeeds);
+    const feeds = await this.aggregateFeeds();
+    return feeds;
   }
-  
+
 }
