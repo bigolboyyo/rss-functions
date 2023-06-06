@@ -1,31 +1,57 @@
-# Node.js Hello World
+ClimateTech Handbook RSS Feed Aggregator
+=======================================
 
-Simple Node.js + Vercel example that returns a "Hello World" response.
+This project is a serverless function deployed on Vercel that aggregates various RSS feeds related to Climate Technology. The feeds are fetched, parsed, and structured into a unified format which can be easily consumed by a client. This provides a single endpoint to fetch the latest updates from multiple Climate Technology sources.
 
-## How to Use
+Key Features
+------------
 
-You can choose from one of the following two methods to use this repository:
+- Aggregates multiple Climate Technology RSS feeds into a unified format
+- Sets appropriate Access Control headers for Cross-Origin Resource Sharing (CORS)
+- Utilizes Vercel's Edge Network for response caching, significantly improving response times for repeat requests
 
-### One-Click Deploy
+Key Classes and Methods
+-----------------------
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+**RSSConfig Class**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/examples/tree/main/solutions/node-hello-world&project-name=node-hello-world&repository-name=node-hello-world)
+The `RSSConfig` class is the central class in the project.
 
-### Clone and Deploy
+Constructor
+------------
+The constructor initializes the class with the allowed origins for CORS.
 
-```bash
-git clone https://github.com/vercel/examples/tree/main/solutions/node-hello-world
-```
+`setAccessControlHeaders`
+-------------------------
+This method sets the appropriate Access Control headers based on the request origin.
 
-Install the Vercel CLI:
+`fetchAndParseFeeds`
+---------------------
+This method fetches and parses the feeds from the given URLs. It uses the `xml2js` library to convert the XML feeds into JSON.
 
-```bash
-npm i -g vercel
-```
+`aggregateFeeds`
+----------------
+This method aggregates the feeds fetched and parsed by `fetchAndParseFeeds`. It consolidates all items from all feeds into a single array.
 
-Then run the app at the root of the repository:
+`buildClimateTechFeed`
+----------------------
+This method structures the aggregated feeds into a `ClimateTechHandbookRSSFeed` format, which includes meta information about the developer and an array of `Channel` objects.
 
-```bash
-vercel dev
-```
+`handleRequest`
+----------------
+This is the main method for handling incoming requests. It sets the Access Control headers and then fetches, parses, and aggregates the feeds before returning them in the response.
+
+How To Use
+----------
+
+This function is deployed as a serverless function on Vercel. You can make a GET request to the function's URL to get the aggregated feeds. The function will return a JSON response that you can then parse and display in your application.
+
+Caching
+-------
+
+This project uses Vercel's Edge Network for caching. This means that after the first request, the RSS feeds will be cached for up to 24 hours (86400 seconds). This will significantly improve the response times for any subsequent requests.
+
+Acknowledgments
+---------------
+
+This project is currently in active development. Features may be added or changed, and there may be occasional downtime or bugs. Your patience and understanding is appreciated. Contributions are welcome!
