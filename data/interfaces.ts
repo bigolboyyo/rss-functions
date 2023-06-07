@@ -1,6 +1,6 @@
 export interface ClimateTechHandbookRSSFeed {
   developer: string;
-  meta: Record<string, any>; // temp fill in for info
+  description: string;
   channels: Channel[];
 }
 

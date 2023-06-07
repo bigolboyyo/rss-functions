@@ -61,10 +61,15 @@ export class RSSConfig {
   // rssFeed.title would be the CTFeed title
 
 
-  public async buildClimateTechFeed(agFeeds: any[], developer: string = "Wesley Grant", meta: Record<string, any>, channels: Channel[]){
+  public async buildClimateTechFeed(agFeeds: any[], 
+    developer: string = "Wesley Grant", 
+    description: string = 
+    "Hello and welcome to the Climate Tech Handbook's RSS aggregator. Here we collect RSS feeds from many different sources all centered around the idea of 'climate tech' and offer them in one endpoint. Feel free to use the data in your own projects and thanks for stopping by!", 
+    channels: Channel[]){
+      
     const feed: ClimateTechHandbookRSSFeed = {
       developer,
-      meta,
+      description,
       channels
     }
 
@@ -78,5 +83,4 @@ export class RSSConfig {
     const feeds = await this.aggregateFeeds();
     return feeds;
   }
-
 }
