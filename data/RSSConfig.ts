@@ -19,7 +19,6 @@ export class RSSConfig {
     }
 
     res.setHeader('Access-Control-Allow-Methods', 'GET');
-    res.setHeader('Cache-Control', 's-maxage=86400');
   }
 
   // --> Fetching and Structuring RSS feed functions

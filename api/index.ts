@@ -13,7 +13,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
           <h1>Welcome to the Climate Tech RSS Bridge!</h1>
           <p>Endpoints:</p>
           <ul>
-            <li><a href="api/climateTechRSS">/climateTechRSS</a></li>
+            <li><a href="/climateTechRSS">/climateTechRSS</a></li>
           </ul>
           <div>
             <h2>README.md:</h2>
