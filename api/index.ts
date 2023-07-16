@@ -1,10 +1,10 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import fs from 'fs';
-import path from 'path';
+import { VercelRequest, VercelResponse } from "@vercel/node";
+import fs from "fs";
+import path from "path";
 
 export default function (req: VercelRequest, res: VercelResponse) {
-  const readmePath = path.join(__dirname, '..', 'README.md');
-  const readmeContent = fs.readFileSync(readmePath, 'utf8');
+  const readmePath = path.join(__dirname, "..", "README.md");
+  const readmeContent = fs.readFileSync(readmePath, "utf8");
 
   const html = `
     <html>
@@ -13,7 +13,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
           <h1>Welcome to the Climate Tech RSS Bridge!</h1>
           <p>Endpoints:</p>
           <ul>
-            <li><a href="/climateTechRSS">/climateTechRSS</a></li>
+            <li><a href="/api/climateTechRSS">/climateTechRSS</a></li>
           </ul>
           <div>
             <h2>README.md:</h2>
@@ -24,6 +24,6 @@ export default function (req: VercelRequest, res: VercelResponse) {
     </html>
   `;
 
-  res.setHeader('content-type', 'text/html');
+  res.setHeader("content-type", "text/html");
   res.status(200).send(html);
 }
